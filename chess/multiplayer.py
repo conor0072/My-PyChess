@@ -63,13 +63,7 @@ def main(win, mode, timer, load, movestr=""):
 
                 else:
                     sel = [0, 0]
-                    if 350 < x < 500 and 460 < y < 490:
-                        starttime = getTime()
-                        if prompt(win, saveGame(moves, mode=mode, timer=timer)):
-                            return 1
-                        timedelta += getTime() - starttime
-                        
-                    elif 0 < x < 80 and 0 < y < 50 and load["allow_undo"]:
+                    if 0 < x < 80 and 0 < y < 50 and load["allow_undo"]:
                         moves = undo(moves)
                         side, board, flags = convertMoves(moves)
 
