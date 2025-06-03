@@ -11,10 +11,9 @@ import pygame
 from tools.loader import PREF, BACK
 from tools.utils import rounded_rect
 
-KEYS = ["sounds", "flip", "slideshow", "show_moves", "allow_undo", "show_clock"]
+KEYS = ["flip", "slideshow", "show_moves", "allow_undo", "show_clock"]
 
 DEFAULTPREFS = {
-    "sounds": False,
     "flip": False,
     "slideshow": True,
     "show_moves": True,
@@ -91,14 +90,13 @@ def showScreen(win, prefs):
     win.blit(PREF.TIP, (20, 450))
     win.blit(PREF.TIP2, (55, 467))
 
-    win.blit(PREF.SOUNDS, (90, 90))
-    win.blit(PREF.FLIP, (25, 150))
-    win.blit(PREF.SLIDESHOW, (40, 210))
-    win.blit(PREF.MOVE, (100, 270))
-    win.blit(PREF.UNDO, (25, 330))
-    win.blit(PREF.CLOCK, (25, 390))
+    win.blit(PREF.FLIP, (25, 90))
+    win.blit(PREF.SLIDESHOW, (40, 150))
+    win.blit(PREF.MOVE, (100, 210))
+    win.blit(PREF.UNDO, (25, 270))
+    win.blit(PREF.CLOCK, (25, 330))
 
-    for i in range(6):
+    for i in range(len(KEYS)):
         win.blit(PREF.COLON, (225, 90 + (i * 60)))
         if prefs[KEYS[i]]:
             rounded_rect(
@@ -113,27 +111,23 @@ def showScreen(win, prefs):
     win.blit(PREF.BSAVE, (350, 450))
 
     x, y = pygame.mouse.get_pos()
-    if 100 < x < 220 and 90 < y < 130:
-        pygame.draw.rect(win, (0, 0, 0), (30, 90, 195, 40))
-        win.blit(PREF.SOUNDS_H[0], (45, 90))
-        win.blit(PREF.SOUNDS_H[1], (80, 110))
-    if 25 < x < 220 and 150 < y < 190:
+    if 25 < x < 220 and 90 < y < 130:
         pygame.draw.rect(win, (0, 0, 0), (15, 150, 210, 50))
         win.blit(PREF.FLIP_H[0], (50, 150))
         win.blit(PREF.FLIP_H[1], (70, 170))
-    if 40 < x < 220 and 210 < y < 250:
+    if 40 < x < 220 and 150 < y < 190:
         pygame.draw.rect(win, (0, 0, 0), (15, 210, 210, 40))
         win.blit(PREF.SLIDESHOW_H[0], (40, 210))
         win.blit(PREF.SLIDESHOW_H[1], (30, 230))
-    if 100 < x < 220 and 270 < y < 310:
+    if 100 < x < 220 and 210 < y < 250:
         pygame.draw.rect(win, (0, 0, 0), (15, 270, 210, 40))
         win.blit(PREF.MOVE_H[0], (35, 270))
         win.blit(PREF.MOVE_H[1], (25, 290))
-    if 25 < x < 220 and 330 < y < 370:
+    if 25 < x < 220 and 270 < y < 310:
         pygame.draw.rect(win, (0, 0, 0), (15, 330, 210, 40))
         win.blit(PREF.UNDO_H[0], (60, 330))
         win.blit(PREF.UNDO_H[1], (85, 350))
-    if 25 < x < 220 and 390 < y < 430:
+    if 25 < x < 220 and 330 < y < 370:
         pygame.draw.rect(win, (0, 0, 0), (15, 390, 210, 40))
         win.blit(PREF.CLOCK_H[0], (50, 390))
         win.blit(PREF.CLOCK_H[1], (40, 410))
@@ -158,7 +152,7 @@ def main(win):
                     save(prefs)
                     return 1
 
-                for i in range(6):
+                for i in range(len(KEYS)):
                     if 90 + i*60 < y < 130 + i*60:
                         if 250 < x < 330:
                             prefs[KEYS[i]] = True

@@ -67,12 +67,7 @@ def main(win, player, level, load, movestr=""):
 
                 elif side == player or end:
                     sel = [0, 0]
-                    if 350 < x < 500 and 460 < y < 490:
-                        msg = saveGame(fish.moves, "single", player, level)
-                        if prompt(win, msg):
-                            fish.close()
-                            return 1
-                    elif 0 < x < 80 and 0 < y < 50 and load["allow_undo"]:
+                    if 0 < x < 80 and 0 < y < 50 and load["allow_undo"]:
                         if side == player:
                             fish.undo(2)
                         else:

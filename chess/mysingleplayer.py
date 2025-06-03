@@ -52,10 +52,7 @@ def main(win, player, load, movestr=""):
 
                 elif side == player or end:
                     sel = [0, 0]
-                    if 350 < x < 500 and 460 < y < 490:
-                        if prompt(win, saveGame(moves, "mysingle", player)):
-                            return 1
-                    elif 0 < x < 80 and 0 < y < 50 and load["allow_undo"]:
+                    if 0 < x < 80 and 0 < y < 50 and load["allow_undo"]:
                         moves = undo(moves, 2) if side == player else undo(moves)
                         side, board, flags = convertMoves(moves)
 

@@ -151,7 +151,6 @@ def showScreen(win, side, board, flags, pos, load, player=None, online=False):
     if not online:
         if load["allow_undo"]:
             win.blit(CHESS.UNDO, (10, 12))
-        win.blit(CHESS.SAVE, (350, 462))
 
     if isEnd(side, board, flags):
         if isChecked(side, board):
